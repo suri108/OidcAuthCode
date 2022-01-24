@@ -1,0 +1,100 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/AccountDetails",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 51312
+        }
+      ],
+      "UpstreamPathTemplate": "/api/gateway/accountdetails",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      //"RateLimitOptions": {
+      //  "ClientWhitelist": [],
+      //  "EnableRateLimiting": true,
+      //  "Period": "1s",
+      //  "PeriodTimespan": 1,
+      //  "Limit": 1
+      //},
+
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": [ "accountdetails" ]
+      }
+      //,
+      //"RouteClaimsRequirement": {
+      //  "role": "dataEventRecords.user"
+      //}
+    },
+    {
+      "DownstreamPathTemplate": "/api/AccountDetails/testrogrant",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 51312
+        }
+      ],
+      "UpstreamPathTemplate": "/api/gateway/accountdetails/ro",
+      "UpstreamHttpMethod": [ "Get" ],
+
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": [ "accountdetailsro" ]
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/AccountDetails/testauthcode",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 51312
+        }
+      ],
+      "UpstreamPathTemplate": "/api/gateway/accountdetailsapi/authcode",
+      "UpstreamHttpMethod": [ "Get" ],
+
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": [ "accountdetailsauthcode" ]
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/demographicsapi",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 51974
+        }
+      ],
+      "UpstreamPathTemplate": "/api/gateway/demographicsapi",
+      "UpstreamHttpMethod": [ "Get" ],
+
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": [ "demographicsApiRead" ]
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/demographicsapi/postdata?input={id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 51974
+        }
+      ],
+      "UpstreamPathTemplate": "/api/gateway/demographicsapi/postdata?input={id}",
+      "UpstreamHttpMethod": [ "POST" ],
+
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": [ "demographicsApiWrite" ]
+      }
+    }
+  ]
+}
